@@ -1,5 +1,119 @@
 {
-    "name": "Overlay System",
-    "version": "1.2.3",
-    "description": "A web overlay system for embedded devices"
-}
+  "devices": [
+    {
+      "id": 1,
+      "fabricante": "ROHDE & SCHWARZ",
+      "modelo": "AVG050-MXF",
+      "numero_de_serie": 101171,
+      "ip": "192.168.58.11",
+      "OIDS": [
+        {
+          "oid": "1.3.6.1.4.1.2566.127.1.3.236.23.2.2.1.1.2.0",
+          "name": "status receptor",
+          "type": "boolean",
+          "enum": {
+            "1": "Not Available",
+            "2": "Inactive",
+            "3": "Ok",
+            "4": "Warning",
+            "5": "Error"
+          },
+          "mask": null,
+          "description": "Indica o status do receptor",
+          "topic": "telemetria/status_receptor"
+        },
+        {
+          "oid": "1.3.6.1.4.1.2566.127.1.3.236.23.2.2.1.2.8.0",
+          "name": "C/N da recepção",
+          "type": "integer",
+          "mask": 0.1,
+          "description": "Indica o nivel do C/N da recepção",
+          "unit": "dB",
+          "topic": "telemetria/carrier_noise"
+        },
+        {
+          "oid": "1.3.6.1.4.1.2566.127.1.3.236.23.2.2.1.2.9.0",
+          "name": "nivel do sinal",
+          "type": "integer",
+          "mask": 1,
+          "description": "Indica o nivel do sinal da recepção",
+          "unit": "dBm",
+          "topic": "telemetria/nivel_receptor"
+        },
+        {
+          "oid": "1.3.6.1.4.1.2566.127.1.3.236.26.2.4.3.0",
+          "name": "temperatura interna",
+          "type": "integer",
+          "mask": 1,
+          "description": "Indica a temperatura interna do receptor",
+          "unit": "°C",
+          "topic": "telemetria/temperatura_interna"
+        },
+        {
+          "oid": "1.3.6.1.4.1.2566.127.1.3.236.23.2.1.2.1.1.0",
+          "name": "status saida ASI 1",
+          "type": "boolean",
+          "enum": {
+            "1": "Not Available",
+            "2": "Inactive",
+            "3": "Ok",
+            "4": "Warning",
+            "5": "Error"
+          },
+          "mask": null,
+          "description": "Indica o status da saida ASI 1",
+          "topic": "telemetria/status_saida_asi_1"
+        },
+        {
+          "oid": "1.3.6.1.4.1.2566.127.1.3.236.23.2.1.2.2.1.0",
+          "name": "status saida ASI 2",
+          "type": "boolean",
+          "enum": {
+            "1": "Not Available",
+            "2": "Inactive",
+            "3": "Ok",
+            "4": "Warning",
+            "5": "Error"
+          },
+          "mask": null,
+          "description": "Indica o status da saida ASI 2",
+          "topic": "telemetria/status_saida_asi_2"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "fabricante": "ROHDE & SCHWARZ",
+      "modelo": "TCE900-MXF",
+      "numero_de_serie": 101180,
+      "ip": "192.168.57.252",
+      "OIDS": [
+        {
+          "oid": "1.3.6.1.4.1.2566.127.1.2.216.3.1.1.3.1.2.1",
+          "name": "Potência direta de Saída",
+          "type": "integer",
+          "mask": 1,
+          "description": "Indica a potência direta de saída do transmissor",
+          "unit": "W",
+          "topic": "telemetria/potencia_direta_saida"
+        },
+        {
+          "oid": "1.3.6.1.4.1.2566.127.1.2.216.3.1.1.3.1.2.1",
+          "name": "Potência refletida de Saída",
+          "type": "integer",
+          "mask": 0.001,
+          "description": "Indica a potência refletida de saída do transmissor",
+          "unit": "W",
+          "topic": "telemetria/potencia_refletida_saida"
+        }
+      ]
+    }
+  ],
+  "info": {
+    "model": "Júpiter",
+    "numero_de_serie": 41001,
+    "estado": "Paraná",
+    "cidade": "Curitiba",
+    "logradouro": "Av. Anita Garibaldi, 850, sala 503c"
+  }
+}   
