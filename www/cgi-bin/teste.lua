@@ -1,7 +1,7 @@
 #!/usr/bin/lua
-print("Content-Type: application/json\n")
+local cjson = require "cjson"
 
-print([[{
-  "status": "ok",
-  "mensagem": "Telemetria ativa"
-}]])
+local f = assert(io.open("../config.json", "rb"))
+local s = f:read("*a"); f:close()
+local t = cjson.decode(s)
+print(t.name)
