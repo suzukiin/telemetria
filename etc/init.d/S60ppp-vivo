@@ -17,7 +17,7 @@ wait_for_modem() {
     echo "[ppp] aguardando modem $MODEM_DEV..."
     for i in $(seq 1 30); do
         [ -e "$MODEM_DEV" ] && return 0
-        sleep 1
+        sleep 2
     done
     return 1
 }
