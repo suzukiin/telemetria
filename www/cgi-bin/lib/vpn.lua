@@ -1,23 +1,26 @@
-local os = require "os"
+local M = {}
 local io = require "io"
 
-local function get_ip_vpn()
+function M.get_ip()
     local pipe = io.popen("tailscale ip -4 2>/dev/null")
-    if not pipe then
-        return nil
-    end
+    if not pipe then return nil end
 
-    local output = pipe:read("*a")
+    local ip = pipe:read("*l")
     pipe:close()
 
-    output = output and output:gsub("%s+", "")
-    if output == "" then
-        return nil
+    if ip and ip ~= "" then
+        return ip
     end
 
-    return output
+    return nil
 end
 
-return {
-    get_ip_vpn = get_ip_vpn
-}
+function M.get_status()
+    local ip = M.get_ip()
+    if ip then
+        return "up", ip
+    end
+    return "down", nil
+end
+
+return M

@@ -1,4 +1,6 @@
 local M = {}
+local io = require "io"
+local os = require "os"
 
 local DEV = "/dev/ttyUSB1"
 
@@ -9,39 +11,52 @@ local function open_port()
     return f
 end
 
-function M.get_rssi()
-    local f = open_port()
-    if not f then
-        return nil, "cannot open modem"
-    end
-
-    -- envia comando
-    f:write("AT+CSQ\r")
+local function send_at(f, cmd, timeout)
+    f:write(cmd .. "\r")
     f:flush()
 
-    local rssi
+    local deadline = os.time() + (timeout or 2)
+    local lines = {}
 
-    -- lê poucas linhas (simula timeout)
-    for _ = 1, 10 do
+    while os.time() < deadline do
         local line = f:read("*l")
-        if not line then break end
+        if line then
+            -- debug opcional
+            -- print("RX:", line)
 
-        -- DEBUG (recomendo deixar agora)
-        print("RX:", line)
+            table.insert(lines, line)
 
-        if line:match("%+CSQ") then
-            rssi = line:match("%+CSQ:%s*(%d+),")
-            break
+            if line == "OK" or line:match("ERROR") then
+                break
+            end
         end
     end
 
-    f:close()
+    return lines
+end
 
-    if not rssi or rssi == "99" then
-        return nil, "invalid rssi"
+function M.get_rssi()
+    local f = open_port()
+    if not f then
+        return nil
     end
 
-    return -113 + (tonumber(rssi) * 2)
+    -- desliga eco
+    send_at(f, "ATE0")
+
+    -- comando RSSI
+    local resp = send_at(f, "AT+CSQ")
+
+    f:close()
+
+    for _, line in ipairs(resp) do
+        local rssi = line:match("%+CSQ:%s*(%d+),")
+        if rssi and rssi ~= "99" then
+            return -113 + (tonumber(rssi) * 2)
+        end
+    end
+
+    return nil
 end
 
 return M
