@@ -20,7 +20,7 @@
           },
           "mask": null,
           "description": "Indica o status do receptor",
-          "topic": "telemetria/status_receptor"
+          "topic": "telemetria-status_receptor"
         },
         {
           "oid": "1.3.6.1.4.1.2566.127.1.3.236.23.2.2.1.2.8.0",
@@ -29,7 +29,7 @@
           "mask": 0.1,
           "description": "Indica o nivel do C/N da recepção",
           "unit": "dB",
-          "topic": "telemetria/carrier_noise"
+          "topic": "telemetria-carrier_noise"
         },
         {
           "oid": "1.3.6.1.4.1.2566.127.1.3.236.23.2.2.1.2.9.0",
@@ -38,7 +38,7 @@
           "mask": 1,
           "description": "Indica o nivel do sinal da recepção",
           "unit": "dBm",
-          "topic": "telemetria/nivel_receptor"
+          "topic": "telemetria-nivel_receptor"
         },
         {
           "oid": "1.3.6.1.4.1.2566.127.1.3.236.26.2.4.3.0",
@@ -47,7 +47,7 @@
           "mask": 1,
           "description": "Indica a temperatura interna do receptor",
           "unit": "°C",
-          "topic": "telemetria/temperatura_interna"
+          "topic": "telemetria-temperatura_interna"
         },
         {
           "oid": "1.3.6.1.4.1.2566.127.1.3.236.23.2.1.2.1.1.0",
@@ -62,7 +62,7 @@
           },
           "mask": null,
           "description": "Indica o status da saida ASI 1",
-          "topic": "telemetria/status_saida_asi_1"
+          "topic": "telemetria-status_saida_asi_1"
         },
         {
           "oid": "1.3.6.1.4.1.2566.127.1.3.236.23.2.1.2.2.1.0",
@@ -77,7 +77,7 @@
           },
           "mask": null,
           "description": "Indica o status da saida ASI 2",
-          "topic": "telemetria/status_saida_asi_2"
+          "topic": "telemetria-status_saida_asi_2"
         }
       ]
     },
@@ -95,7 +95,7 @@
           "mask": 1,
           "description": "Indica a potência direta de saída do transmissor",
           "unit": "W",
-          "topic": "telemetria/potencia_direta_saida"
+          "topic": "telemetria-potencia_direta_saida"
         },
         {
           "oid": "1.3.6.1.4.1.2566.127.1.2.216.3.1.1.3.1.2.1",
@@ -104,13 +104,17 @@
           "mask": 0.001,
           "description": "Indica a potência refletida de saída do transmissor",
           "unit": "W",
-          "topic": "telemetria/potencia_refletida_saida"
+          "topic": "telemetria-potencia_refletida_saida"
         }
       ]
     }
   ],
   "info": {
     "model": "Júpiter",
+    "ips": [
+      "192.168.58.100/24",
+      "192.168.57.100/24"
+    ],
     "numero_de_serie": "#CWB-paieterno-001",
     "estado": "Paraná",
     "cidade": "Curitiba",
